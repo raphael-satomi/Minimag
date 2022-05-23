@@ -4,12 +4,13 @@ body {
 }
 .top_header {
 	background-color:#222326;
-	height:45px;
 	border-bottom:1px solid #414346;
 }
 .navbar-default {
-	background:none;
 	border:0;
+	background:none;
+	margin-bottom: 0;
+	min-height: 44px;
 }
 .navbar-nav>li>a {
 	padding-top: 12px;
@@ -124,13 +125,11 @@ section .row {
 .sidebar .widget {
 	border-bottom:2px solid #e4e4e4;
 }
-.sidebar .widget .tagcloud {
-	padding-bottom:20px;
-}
-.sidebar .widget .tagcloud a {
+.sidebar .widget .wp-block-tag-cloud a {
 	background-color:#94c345;
 	color:#FFFFFF;
 	padding:10px;
+	font-size: 1.3rem !important;
 }
 .maincontent {
 	background-color:#FFFFFF;
@@ -191,8 +190,7 @@ footer {
 }
 .post_item {
 	margin: 15px;
-	background-color: #000;
-	height: 442px;
+	height: 450px;
 }
 .post_comment_area {
 	height: 22px;
@@ -212,18 +210,31 @@ footer {
 }
 .post_info {
 	min-height: 200px;
+	position: relative;
+}
+.post_info:before {
+	content: '.';
+	position: absolute;
+	background-color: #bbb;
+	height: 200px;
+	width: 100%;
 }
 .post_thumb {
 	width: 100%;
 	height: auto;
 	max-height: 100%;
-	margin-top: -22px;
 	max-height: 200px;
+	position: absolute;
+	top: 0;
 }
 .post_data {
 	color: #b0afb0;
-	margin-top: 10px;
+	padding-top: 210px;
 	text-transform: uppercase;
+}
+.single-post .post_data {
+	margin-top: 10px;
+	padding-top: 0;
 }
 .post_title {
 	font-size: 20px;
@@ -234,7 +245,7 @@ footer {
 }
 
 .pag {
-	margin: 20px;
+	padding: 20px;
 }
 .previous_pag {
 	float: left;
@@ -274,6 +285,86 @@ footer {
 .comentario p {
 	margin: 0;
 }
+
+
+/* Tablet vertical */
+@media (min-width: 481px) and (max-width: 768px) {
+	.maincontent article {
+		float: none;
+		width: auto;
+	}
+	.maincontent article .post_item {
+		height: auto;
+		margin: 0;
+		padding-top: 15px;
+	}
+	.post_info {
+		min-height: 0;
+	}
+}
+
+/* Celular Vertical */
+@media (max-width: 480px) {
+	.footer_widgets .row {
+		display: initial;
+	}
+	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+		border-color: transparent
+	}
+	.logo {
+		text-align: center;
+	}
+	.main_info,
+	.search_area {
+		display: none;
+	}
+	.main_nav {
+		height: auto;
+	}
+	.main_nav .navbar-nav {
+		margin: 0;
+	}
+	.maincontent article {
+		float: none;
+		width: auto;
+	}
+
+	.maincontent article .post_item {
+		height: auto;
+		margin: 0;
+		padding-top: 15px;
+	}
+
+	.maincontent,
+	.sidebar {
+		padding-top: 1px
+	}
+	.post_info {
+		min-height: 0;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
