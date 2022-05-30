@@ -12,8 +12,8 @@
         // Sections
         $wp_customize->add_section('bm_social_section', array(
             'title' => 'Redes Sociais',
-            'priority' => '1'
-
+            'priority' => '1',
+            'panel' => 'opcoes'
         ));
     
         // Controllers
