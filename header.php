@@ -65,81 +65,93 @@
 							?>
 						</div>
 					</div>
+
+					<!-- if( is_home() ): 	Verifica se está na home -->
+					<!-- if( is_single() ): Verifica se está num post -->
+					<!-- if( is_page() ): 	Verifica se está numa página -->
+					<!-- if( is_page() ): 	Verifica se está dentro da página de busca -->
+
 					<div class="main_info">
 						<div class="row">
-							<div class="col-sm-8 randompost">
-								<strong>Você já viu?</strong>
-								<?php
-								
-								if( function_exists('wpp_get_mostpopular') ) {
-									wpp_get_mostpopular(array(
-										'limit' => 1,
-										'wpp_start' => '',
-										'wpp_end' => '',
-										'post_html' => '<a href="{url}">{text_title}</a>'
-									));
+							
+							<?php 
+							if( !is_single() ):
+							?>
+								<div class="col-sm-8 randompost">
+									<strong>Você já viu?</strong>
+									<?php
 
-								}else{
-									$bm_query = new WP_Query(array(
-										'posts_per_page' => 1,
-										'post_type' => 'post',
-										'orderby' => 'rand'
-									));
-									if($bm_query->have_posts()) {
-										while($bm_query->have_posts()) {
-											$bm_query->the_post();
-											?>
-											<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-											<?php
+									if( function_exists('wpp_get_mostpopular') ) {
+										wpp_get_mostpopular(array(
+											'limit' => 1,
+											'wpp_start' => '',
+											'wpp_end' => '',
+											'post_html' => '<a href="{url}">{text_title}</a>'
+										));
+
+									}else{
+										$bm_query = new WP_Query(array(
+											'posts_per_page' => 1,
+											'post_type' => 'post',
+											'orderby' => 'rand'
+										));
+										if($bm_query->have_posts()) {
+											while($bm_query->have_posts()) {
+												$bm_query->the_post();
+												?>
+												<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+												<?php
+											}
+
+											wp_reset_postdata();
 										}
 
-										wp_reset_postdata();
 									}
 
-								}
-
-								?>
-							</div>
-							<div class="col-sm-4 socialarea">
-								<div class="socialtxt">
-									SIGA:
+									?>
 								</div>
-								<div class="socialicons">
+									
 
-									<?php if( get_theme_mod('bm_facebook')): ?>
-										<a href="<?php echo get_theme_mod('bm_facebook'); ?>" target="_blank">
-											<img src="<?php echo get_template_directory_uri(); ?>/assets/images/facebook.png" />
-										</a>
-									<?php endif; ?>
+								<div class="col-sm-4 socialarea">
+									<div class="socialtxt">
+										SIGA:
+									</div>
+									<div class="socialicons">
 
-									<?php if( get_theme_mod('bm_googleplus')): ?>
-										<a href="<?php echo get_theme_mod('bm_googleplus'); ?>" target="_blank">
-											<img src="<?php echo get_template_directory_uri(); ?>/assets/images/gplus.png" />
-										</a>
-									<?php endif; ?>
+										<?php if( get_theme_mod('bm_facebook')): ?>
+											<a href="<?php echo get_theme_mod('bm_facebook'); ?>" target="_blank">
+												<img src="<?php echo get_template_directory_uri(); ?>/assets/images/facebook.png" />
+											</a>
+										<?php endif; ?>
 
-									<?php if( get_theme_mod('bm_instagram')): ?>
-										<a href="<?php echo get_theme_mod('bm_instagram'); ?>" target="_blank">
-											<img src="<?php echo get_template_directory_uri(); ?>/assets/images/instagram.png" />
-										</a>
-									<?php endif; ?>
+										<?php if( get_theme_mod('bm_googleplus')): ?>
+											<a href="<?php echo get_theme_mod('bm_googleplus'); ?>" target="_blank">
+												<img src="<?php echo get_template_directory_uri(); ?>/assets/images/gplus.png" />
+											</a>
+										<?php endif; ?>
 
-									<?php if( get_theme_mod('bm_twitter')): ?>
-										<a href="<?php echo get_theme_mod('bm_twitter'); ?>" target="_blank">
-											<img src="<?php echo get_template_directory_uri(); ?>/assets/images/twitter.png" />
-										</a>
-									<?php endif; ?>
+										<?php if( get_theme_mod('bm_instagram')): ?>
+											<a href="<?php echo get_theme_mod('bm_instagram'); ?>" target="_blank">
+												<img src="<?php echo get_template_directory_uri(); ?>/assets/images/instagram.png" />
+											</a>
+										<?php endif; ?>
 
-									<?php if( get_theme_mod('bm_youtube')): ?>
-										<a href="<?php echo get_theme_mod('bm_youtube'); ?>" target="_blank">
-											<img src="<?php echo get_template_directory_uri(); ?>/assets/images/youtube.png" />
-										</a>
-									<?php endif; ?>
+										<?php if( get_theme_mod('bm_twitter')): ?>
+											<a href="<?php echo get_theme_mod('bm_twitter'); ?>" target="_blank">
+												<img src="<?php echo get_template_directory_uri(); ?>/assets/images/twitter.png" />
+											</a>
+										<?php endif; ?>
 
+										<?php if( get_theme_mod('bm_youtube')): ?>
+											<a href="<?php echo get_theme_mod('bm_youtube'); ?>" target="_blank">
+												<img src="<?php echo get_template_directory_uri(); ?>/assets/images/youtube.png" />
+											</a>
+										<?php endif; ?>
+
+									</div>
 								</div>
 
-								
-							</div>
+							<?php endif; ?>
 						</div>
 					</div>
 				</div>
